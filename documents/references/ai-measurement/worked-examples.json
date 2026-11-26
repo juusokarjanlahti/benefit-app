@@ -1,0 +1,321 @@
+{
+  "referenceVersion": "0.1.1",
+  "reviewStatus": "source-derived-not-expert-reviewed",
+  "examples": [
+    {
+      "id": "gui-basic",
+      "kind": "supplied-example",
+      "source": {
+        "id": "GUI",
+        "pages": [3]
+      },
+      "prompt": "A screen has its unique title, a static background with field headings, a Project name field, a vertical Activities table with Activity name/Percentage/Info columns repeated over five rows, a total-percentage field, Save and Back buttons, and one specified out-of-field error message not visible normally. No logical data model or reading-reference count is supplied. Count data elements; can you give readingReferences and total fp without a default assumption?",
+      "expected": {
+        "dataElements": 10,
+        "readingReferences": null,
+        "fp": null,
+        "needsClarification": true
+      },
+      "reason": "Title + background + project field + 3 unique table columns + total + 2 buttons + specified error = 10. Repetition does not add elements. The example gives no justified reading-reference count or complete classification, so a total is unresolved.",
+      "ruleIds": ["G01", "G02", "G04", "G08", "G11", "S04"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "benefit-input",
+      "kind": "supplied-example",
+      "source": {
+        "id": "BENEFIT",
+        "pages": [3]
+      },
+      "prompt": "An input form has one person-name field, one likes-sleeping checkbox and one Save button. Count the screen background once; there is no separately specified screen title or other element in this exercise. The specification supplies one reading reference, one writing reference and one supported input action (save/create only, m=1). Find dataElements, r, w, m and base fp at full precision.",
+      "expected": {
+        "dataElements": 4,
+        "readingReferences": 1,
+        "writingReferences": 1,
+        "functionalMultiplier": 1,
+        "fp": 2.1666666666666665
+      },
+      "reason": "Three controls plus background = 4. With the explicitly supplied references, 1*(0.2+4/5+1/1.5+1/2)=13/6, displayed as 2.17. This is a specified-input example; the reference counts are not inferred from pixels.",
+      "ruleIds": ["G02", "F02", "B03"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "selection-reuse",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "GUI",
+        "pages": [1]
+      },
+      "prompt": "The same unique Country selection list appears on two different screens within one measured application. What is the number of independent selection-list functions, and how many data elements does that list contribute to each screen? Do not count the rest of either screen.",
+      "expected": {
+        "independentFunctions": 1,
+        "dataElementsPerScreen": 1,
+        "screenOccurrences": 2
+      },
+      "reason": "Count the unique selection list once as an independent function, plus one element in each screen occurrence. This is not a complete inventory of either screen.",
+      "ruleIds": ["G06"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "query-default",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "MLA",
+        "pages": [3]
+      },
+      "prompt": "The measurement explicitly adopts the three-layer pattern. A query screen is identified, but there is no detailed specification for its reading references. Use the guide-recommended fallback. Return readingReferences and basis: observed, specified, guideline-default, or unresolved.",
+      "expected": {
+        "readingReferences": 2,
+        "basis": "guideline-default"
+      },
+      "reason": "MLA recommends 2 read references for query/browsing/generation screens only when detailed specification is unavailable. Label this as a default rather than an observation.",
+      "ruleIds": ["M02", "S04"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "business-dependencies",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "MLA",
+        "pages": [5, 6]
+      },
+      "prompt": "Apply MLA Tables 3 and 4 in the chosen three-layer pattern. One UI function has 7 data elements. Its business-side incoming UI message requires 3 messages to data access. Its outgoing UI message requires 2 messages from data access. A separate parent UI record has r=9,w=0. Determine incomingDataElements, incomingReadingReferences, incomingWritingReferences, outgoingDataElements and outgoingReadingReferences. Use the explicitly given dependencies.",
+      "expected": {
+        "incomingDataElements": 7,
+        "incomingReadingReferences": 1,
+        "incomingWritingReferences": 3,
+        "outgoingDataElements": 7,
+        "outgoingReadingReferences": 2
+      },
+      "reason": "Table 3 uses the number of required messages to data access for w, while Table 4 uses the number from data access for r. The parent record sum 9 does not override the stated dependencies.",
+      "ruleIds": ["M04", "B02"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "external-unknown",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "MLA",
+        "pages": [5]
+      },
+      "prompt": "A requirement says only: integrate with an external CRM. It supplies no payload, direction or logical dependencies. Can the internal-message table defaults establish dataElements, readingReferences and writingReferences for this integration? Return those values and needsClarification.",
+      "expected": {
+        "dataElements": null,
+        "readingReferences": null,
+        "writingReferences": null,
+        "needsClarification": true
+      },
+      "reason": "The guide gives no reference defaults for external integrations; direction, payload and dependency evidence are missing. Ask instead of borrowing internal defaults.",
+      "ruleIds": ["M08", "G11", "S04"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "horizontal-table",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "GUI",
+        "pages": [2]
+      },
+      "prompt": "A horizontal table has four unique row attributes (Name, Budget, Owner, Status), repeated across twelve project columns. No dynamic choices or other elements are specified. Count only the table data elements, not the complete screen.",
+      "expected": {
+        "tableDataElements": 4
+      },
+      "reason": "For a horizontal table, count the unique row attributes rather than repeating them for every column.",
+      "ruleIds": ["G04"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "task-unknown",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "BENEFIT",
+        "pages": [19, 20, 34]
+      },
+      "prompt": "The only evidence is the user task: create a customer. There is no screen, list of fields, data model, measurement pattern or delivery-status information. Return dataElements, readingReferences and degreeOfCompletion, and whether clarification is needed. Do not make a provisional estimate.",
+      "expected": {
+        "dataElements": null,
+        "readingReferences": null,
+        "degreeOfCompletion": null,
+        "needsClarification": true
+      },
+      "reason": "A task suggests a candidate action but does not establish counts, boundary, references or completion. Confidence and completion are different; do not assume complete because the task is understood.",
+      "ruleIds": ["G11", "S04", "B04"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "quality-and-errors",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "GUI",
+        "pages": [2, 4]
+      },
+      "prompt": "An otherwise measured screen has these extra requirements: tooltip help for an existing field, a restriction on allowed characters, window resizing and scrollbars, and one specified warning outside the data fields. Count only additional data elements caused by these requirements.",
+      "expected": {
+        "additionalDataElements": 1
+      },
+      "reason": "Only the specified out-of-field warning adds an element here. Tooltip/character restrictions are quality characteristics; resizing and scrollbars are basic window services.",
+      "ruleIds": ["G08", "G09", "G10"],
+      "reviewStatus": "source-derived-not-expert-reviewed"
+    },
+    {
+      "id": "intro-query",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [10, 15]
+      },
+      "prompt": "A data inquiry has 40 data elements and 4 explicitly supplied reading references. Give base fp at full precision, using the stated inquiry formula.",
+      "expected": {
+        "fp": 7.914285714285715
+      },
+      "reason": "0.2+40/7+4/2=7.914285714285714; slide displays 7.9. Inputs are source-supplied, not independently recounted from its screenshot.",
+      "ruleIds": ["F01"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-input-two",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [19, 21]
+      },
+      "prompt": "An input dialog supports create and update, with 19 data elements, 1 writing reference and 1 additional reading reference. Return functionalMultiplier and base fp at full precision.",
+      "expected": {
+        "functionalMultiplier": 2,
+        "fp": 10.333333333333334
+      },
+      "reason": "Two maintenance actions imply m=2. Base points=10.333333333333334; slide displays 10.3.",
+      "ruleIds": ["B03", "F02", "C02"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-output",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [24, 25]
+      },
+      "prompt": "A fixed-layout output form has 24 data elements and 2 reading references. Return base fp at full precision.",
+      "expected": {
+        "fp": 6.8
+      },
+      "reason": "1+24/5+2/2=6.8, matching the slide.",
+      "ruleIds": ["F03", "C03"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-outgoing",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [30, 31]
+      },
+      "prompt": "An outgoing online message to another application has 14 data elements and 2 specified reading references. Return base fp at full precision.",
+      "expected": {
+        "fp": 3.5
+      },
+      "reason": "0.5+14/7+2/2=3.5. No default references are needed.",
+      "ruleIds": ["F04", "C04"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-incoming",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [35, 36]
+      },
+      "prompt": "An incoming online message has 14 data elements, 1 writing reference and 1 additional reading reference. Return base fp at full precision.",
+      "expected": {
+        "fp": 4.166666666666666
+      },
+      "reason": "0.2+14/5+1/1.5+1/2=4.166666666666666; slide displays 4.2.",
+      "ruleIds": ["F05", "C04"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-storage-conflict",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [40, 41]
+      },
+      "prompt": "An entity has 3 specified attributes. The slide reports 2.1 FP, but the counting-rule slide states 1.5+d/4. Return formulaFp, publishedFp and sourceConflict; do not silently copy or overwrite the published value.",
+      "expected": {
+        "formulaFp": 2.25,
+        "publishedFp": 2.1,
+        "sourceConflict": true
+      },
+      "reason": "The supplied equation gives 2.25. The 2.1 label is inconsistent; preserve it as a source claim, not an accepted arithmetic answer.",
+      "ruleIds": ["F06", "X01"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-algorithm",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [44, 46]
+      },
+      "prompt": "A calculation routine has 8 distinct variables/data elements and 7 specified operations. Return base fp at full precision.",
+      "expected": {
+        "fp": 4.033333333333333
+      },
+      "reason": "0.1+8/5+7/3=4.033333333333333; slide displays 4.0. Inputs are supplied by the slide, not independently verified operation counts.",
+      "ruleIds": ["F07", "C06"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-reports-mapping",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [26]
+      },
+      "prompt": "A non-interactive report has a layout that varies with its data within a specified framework. Identify className, sourceType as the INTRO code only (for example o2), and exact benefitComponentType using the current mapping table. Return needsMappingReview=false when the exact mapping exists; otherwise return null and true.",
+      "expected": {
+        "className": "Non-interactive end-user output service",
+        "sourceType": "o2",
+        "benefitComponentType": "reports",
+        "needsMappingReview": false
+      },
+      "reason": "INTRO distinguishes o2 Reports from o1 fixed-layout forms. Upstream commit 63fe3076 restored the exact reports option; a mapping workaround is no longer required.",
+      "ruleIds": ["C03", "X02"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-operation-unknown",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [44, 50]
+      },
+      "prompt": "An algorithmic example lists 11 data elements and 1 reading reference, and labels the result 3.4 FP. It does not give an operation count. Return operations, fp and needsClarification for a defensible measurement; do not reverse-engineer an operation count from the label.",
+      "expected": {
+        "operations": null,
+        "fp": null,
+        "needsClarification": true
+      },
+      "reason": "The algorithmic formula needs operations, not reading references. A numeric result does not justify inventing the missing operations.",
+      "ruleIds": ["F07", "X01", "S04"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    },
+    {
+      "id": "intro-summary-conflict",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [51]
+      },
+      "prompt": "A slide sums these displayed values: 2.4, 4.0, 7.2, 5.0, 2.6, 3.4, then prints 24.2. Return sumOfDisplayedValues, publishedTotal and sourceConflict. This is only an arithmetic audit, not validation of the component measurements.",
+      "expected": {
+        "sumOfDisplayedValues": 24.6,
+        "publishedTotal": 24.2,
+        "sourceConflict": true
+      },
+      "reason": "The six displayed values sum to 24.6. This does not validate the last component or independently establish a complete-system total.",
+      "ruleIds": ["X01"],
+      "reviewStatus": "arithmetic-checked-not-expert-reviewed"
+    }
+  ]
+}

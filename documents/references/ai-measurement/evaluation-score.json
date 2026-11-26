@@ -1,0 +1,105 @@
+{
+  "referenceVersion": "0.1.1",
+  "passedCases": 19,
+  "totalCases": 19,
+  "passedFields": 49,
+  "totalFields": 49,
+  "results": [
+    {
+      "id": "gui-basic",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "benefit-input",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "selection-reuse",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "query-default",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "business-dependencies",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "external-unknown",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "horizontal-table",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "task-unknown",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "quality-and-errors",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-query",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-input-two",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-output",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-outgoing",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-incoming",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-storage-conflict",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-algorithm",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-reports-mapping",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-operation-unknown",
+      "passed": true,
+      "failures": []
+    },
+    {
+      "id": "intro-summary-conflict",
+      "passed": true,
+      "failures": []
+    }
+  ],
+  "limitation": "Checks decision fields only; explanations, vision accuracy and independent expert correctness are not scored."
+}

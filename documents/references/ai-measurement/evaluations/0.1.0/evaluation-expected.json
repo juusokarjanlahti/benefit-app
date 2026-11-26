@@ -1,0 +1,111 @@
+{
+  "referenceVersion": "0.1.0",
+  "answers": [
+    {
+      "id": "gui-basic",
+      "dataElements": 10,
+      "readingReferences": null,
+      "fp": null,
+      "needsClarification": true
+    },
+    {
+      "id": "benefit-input",
+      "dataElements": 4,
+      "readingReferences": 1,
+      "writingReferences": 1,
+      "functionalMultiplier": 1,
+      "fp": 2.1666666666666665
+    },
+    {
+      "id": "selection-reuse",
+      "independentFunctions": 1,
+      "dataElementsPerScreen": 1,
+      "screenOccurrences": 2
+    },
+    {
+      "id": "query-default",
+      "readingReferences": 2,
+      "basis": "guideline-default"
+    },
+    {
+      "id": "business-dependencies",
+      "incomingDataElements": 7,
+      "incomingReadingReferences": 1,
+      "incomingWritingReferences": 3,
+      "outgoingDataElements": 7,
+      "outgoingReadingReferences": 2
+    },
+    {
+      "id": "external-unknown",
+      "dataElements": null,
+      "readingReferences": null,
+      "writingReferences": null,
+      "needsClarification": true
+    },
+    {
+      "id": "horizontal-table",
+      "tableDataElements": 4
+    },
+    {
+      "id": "task-unknown",
+      "dataElements": null,
+      "readingReferences": null,
+      "degreeOfCompletion": null,
+      "needsClarification": true
+    },
+    {
+      "id": "quality-and-errors",
+      "additionalDataElements": 1
+    },
+    {
+      "id": "intro-query",
+      "fp": 7.914285714285715
+    },
+    {
+      "id": "intro-input-two",
+      "functionalMultiplier": 2,
+      "fp": 10.333333333333334
+    },
+    {
+      "id": "intro-output",
+      "fp": 6.8
+    },
+    {
+      "id": "intro-outgoing",
+      "fp": 3.5
+    },
+    {
+      "id": "intro-incoming",
+      "fp": 4.166666666666666
+    },
+    {
+      "id": "intro-storage-conflict",
+      "formulaFp": 2.25,
+      "publishedFp": 2.1,
+      "sourceConflict": true
+    },
+    {
+      "id": "intro-algorithm",
+      "fp": 4.033333333333333
+    },
+    {
+      "id": "intro-reports-mapping",
+      "className": "Non-interactive end-user output service",
+      "sourceType": "o2",
+      "benefitComponentType": null,
+      "needsMappingReview": true
+    },
+    {
+      "id": "intro-operation-unknown",
+      "operations": null,
+      "fp": null,
+      "needsClarification": true
+    },
+    {
+      "id": "intro-summary-conflict",
+      "sumOfDisplayedValues": 24.6,
+      "publishedTotal": 24.2,
+      "sourceConflict": true
+    }
+  ]
+}

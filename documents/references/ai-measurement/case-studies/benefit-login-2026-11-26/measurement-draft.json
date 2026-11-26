@@ -1,0 +1,306 @@
+{
+  "title": "Benefit app login page",
+  "referenceVersion": "0.1.1",
+  "observedDate": "2026-11-26",
+  "status": "needs-scope-manager-review",
+  "scope": {
+    "source": "running local browser UI only; application source code not inspected for this measurement",
+    "url": "http://localhost:5173/benefit-app/login#/login",
+    "architecture": "MLA measurement pattern requested by user",
+    "navigation": "login route only; no successful login, other page, registration, password reset or logout visited",
+    "included": "core login function plus proposed UI/business inter-layer messages; all visible shared-header controls inventoried separately",
+    "excluded": "backend internals, data-storage entities, unrelated destination functions and separate technical security routines",
+    "completionStatus": "unresolved"
+  },
+  "coreLogin": {
+    "candidateId": "LOGIN01",
+    "className": "Interactive end-user navigation and query service",
+    "componentType": "log-in log-out functions",
+    "classificationBasis": "C01 / source INTRO p.12; actual login behavior supports q2, not a create/update/delete input function",
+    "dataElements": 8,
+    "countStatus": "provisional",
+    "countedItems": [
+      {
+        "id": "D01",
+        "element": "Sign in title",
+        "decision": "include",
+        "count": 1,
+        "ruleIds": [
+          "G02"
+        ],
+        "evidence": [
+          "E01"
+        ]
+      },
+      {
+        "id": "D02",
+        "element": "Screen background and static labels",
+        "decision": "include once",
+        "count": 1,
+        "ruleIds": [
+          "G02"
+        ],
+        "evidence": [
+          "E01"
+        ]
+      },
+      {
+        "id": "D03",
+        "element": "Username input",
+        "decision": "include",
+        "count": 1,
+        "ruleIds": [
+          "G03"
+        ],
+        "evidence": [
+          "E01"
+        ]
+      },
+      {
+        "id": "D04",
+        "element": "Password input",
+        "decision": "include",
+        "count": 1,
+        "ruleIds": [
+          "G03"
+        ],
+        "evidence": [
+          "E01"
+        ]
+      },
+      {
+        "id": "D05",
+        "element": "Password visibility button",
+        "decision": "include provisionally as an explicit push button; review whether excluded as a quality feature",
+        "count": 1,
+        "ruleIds": [
+          "G05",
+          "G10"
+        ],
+        "evidence": [
+          "E03"
+        ],
+        "reviewRequired": true
+      },
+      {
+        "id": "D06",
+        "element": "Remember me checkbox",
+        "decision": "include as an explicit user input; observed checked and unchecked",
+        "count": 1,
+        "ruleIds": [
+          "G03",
+          "G05"
+        ],
+        "evidence": [
+          "E01",
+          "E04"
+        ]
+      },
+      {
+        "id": "D07",
+        "element": "Login button",
+        "decision": "include",
+        "count": 1,
+        "ruleIds": [
+          "G05"
+        ],
+        "evidence": [
+          "E01",
+          "E05"
+        ]
+      },
+      {
+        "id": "D08",
+        "element": "Out-of-field warning/error presentation",
+        "decision": "include once per login function, not once per error string or screenshot",
+        "count": 1,
+        "ruleIds": [
+          "G08"
+        ],
+        "evidence": [
+          "E00",
+          "E05"
+        ]
+      }
+    ],
+    "readingReferences": null,
+    "degreeOfCompletion": null,
+    "isMLA": true,
+    "subComponents": [
+      {
+        "layer": "UI",
+        "direction": "UI to business",
+        "className": "Interface service to other applications",
+        "dataElements": 8,
+        "readingReferences": 1,
+        "writingReferences": null,
+        "basis": "MLA Table 1 common-practice pattern, conditional on confirmed login d"
+      },
+      {
+        "layer": "business",
+        "direction": "From UI",
+        "className": "Interface service from other applications",
+        "dataElements": 8,
+        "readingReferences": 1,
+        "writingReferences": null,
+        "basis": "MLA Table 3; writingReferences unresolved: required messages to data access"
+      },
+      {
+        "layer": "business",
+        "direction": "To UI",
+        "className": "Interface service to other applications",
+        "dataElements": 8,
+        "readingReferences": null,
+        "writingReferences": null,
+        "basis": "MLA Table 4; readingReferences unresolved: required messages from data access"
+      },
+      {
+        "layer": "UI",
+        "direction": "From business",
+        "className": "Interface service from other applications",
+        "dataElements": 8,
+        "readingReferences": 1,
+        "writingReferences": 1,
+        "basis": "MLA Table 2 common-practice pattern, conditional on confirmed login d"
+      }
+    ]
+  },
+  "sharedHeader": [
+    {
+      "id": "SHELL01",
+      "element": "FiSMA-BENEFIT logo link",
+      "observed": true,
+      "candidate": "shared function designator",
+      "classificationStatus": "proposed",
+      "tested": false,
+      "reason": "Visible on the login page; destination not opened. Requires application-level allocation to avoid double counting."
+    },
+    {
+      "id": "SHELL02",
+      "element": "EN button",
+      "observed": true,
+      "candidate": null,
+      "classificationStatus": "unresolved",
+      "tested": false,
+      "reason": "Language control observed; behavior and independent-function treatment were not tested or assumed."
+    },
+    {
+      "id": "SHELL03",
+      "element": "Quick Calculation button",
+      "observed": true,
+      "candidate": "shared function designator",
+      "classificationStatus": "proposed",
+      "tested": false,
+      "reason": "Visible entry point observed; destination not opened and calculator internals are outside this test."
+    }
+  ],
+  "exclusions": [
+    {
+      "element": "Username/key decorative icons and static field text",
+      "reason": "Part of static presentation/background, no separate action observed; G02."
+    },
+    {
+      "element": "Browser chrome, native required-field validation bubble, shadows and layout styling",
+      "reason": "Basic window or quality behavior; G09-G10. Browser validation is not another application error BFC."
+    },
+    {
+      "element": "Repeated error texts/screenshots and error-dialog title/background",
+      "reason": "Proposed one per-function out-of-field error element under G08, not another screen just because a modal appears; dismissal treatment remains Q-COUNT-02."
+    },
+    {
+      "element": "Test Version text",
+      "reason": "Static shared-header text; not an independently measured user service."
+    },
+    {
+      "element": "PostgreSQL, Spring Boot and React services as extra components",
+      "reason": "Technology names do not establish counted logical entities or independently required algorithms; user chose MLA measurement, not an inferred inventory of implementation internals."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E00",
+      "observation": "Initial page displayed a session-invalid banner. This disappeared on reload after testing. No session token or storage contents were read.",
+      "artifact": "remember-me.jpg"
+    },
+    {
+      "id": "E01",
+      "observation": "Normal login state after reload; fields empty, password masked, Remember me unchecked. Header contains logo link, Test Version text, EN and Quick Calculation buttons.",
+      "artifact": "login-normal.jpg"
+    },
+    {
+      "id": "E02",
+      "observation": "Submitting with both fields empty produced the browser required-field message: Please fill out this field. No successful login occurred.",
+      "artifact": null
+    },
+    {
+      "id": "E03",
+      "observation": "Password visibility button toggled the display of an invented test password, then was restored to masked.",
+      "artifact": null
+    },
+    {
+      "id": "E04",
+      "observation": "Remember me changed to checked, then was restored to unchecked. Persistence after successful login was not tested.",
+      "artifact": "remember-me.jpg"
+    },
+    {
+      "id": "E05",
+      "observation": "One submission using invented, invalid credentials displayed Error / Invalid username or password, an X dismiss control and a Close button. Close dismissed the dialog.",
+      "artifact": "invalid-login.jpg"
+    }
+  ],
+  "openQuestions": [
+    {
+      "id": "Q-COUNT-01",
+      "question": "Should the password visibility button be a data element under the push-button rule or excluded as a quality/usability feature?",
+      "impact": "Removing it changes the core login inventory from 8 to 7."
+    },
+    {
+      "id": "Q-COUNT-02",
+      "question": "Are the error modal Close and X controls basic dismissal services, or must an application-specific dismissal control add an element?",
+      "impact": "They are provisionally included in the error presentation/basic dismissal treatment, not separately counted. The qualified measurer must decide; no new error-screen component was invented."
+    },
+    {
+      "id": "Q-SCOPE-01",
+      "question": "Where should the shared logo, language control and Quick Calculation entry point be allocated in a login-page measurement?",
+      "impact": "They were inventoried separately and not silently dropped. The core login subtotal is not a complete total for all visible page services."
+    },
+    {
+      "id": "Q-REF-01",
+      "question": "What are the login function reading references under the agreed measurement boundary?",
+      "impact": "Unknown from browser inspection. Do not infer PostgreSQL table counts or import the query-screen r=2 default into login without justification."
+    },
+    {
+      "id": "Q-MLA-01",
+      "question": "Which data-access messages support the business-side incoming and outgoing login messages?",
+      "impact": "MLA Tables 3-4 require dependency counts; they cannot be established from this browser-only observation. Benefit normally uses the parent r+w pattern, whose applicability must be reviewed."
+    },
+    {
+      "id": "Q-COMP-01",
+      "question": "What completion status is supported by delivery evidence?",
+      "impact": "Seeing a login UI and an invalid-login error does not establish completion=1 or successful authentication."
+    },
+    {
+      "id": "Q-BASELINE-01",
+      "question": "What is the independent scope-manager measurement for this same scope, states and architecture convention?",
+      "impact": "No independent professional baseline has been supplied, so agreement, missed-function rate and numeric error cannot yet be scored."
+    }
+  ],
+  "calculation": {
+    "status": "not-finalized",
+    "baseFp": null,
+    "actualFp": null,
+    "possibleFp": null,
+    "reason": "Core r, business-side dependencies, completion and disputed counted elements are unresolved. No zero substitution or invented defaults."
+  },
+  "mcp": {
+    "projectCreated": false,
+    "projectId": null,
+    "limitation": "The current creation tool cannot save the MLA parent/subcomponent tree. No flattening into unrelated top-level components was performed."
+  },
+  "professionalComparison": {
+    "baselineAvailable": false,
+    "independent": false,
+    "accuracyScore": null,
+    "nextStep": "Freeze this draft, give the scope manager the same evidence and scope (preferably count independently before reading this proposed count), then compare disagreements by element, classification, references, layer and total."
+  }
+}

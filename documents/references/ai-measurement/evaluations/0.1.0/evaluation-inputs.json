@@ -1,0 +1,235 @@
+{
+  "referenceVersion": "0.1.0",
+  "cases": [
+    {
+      "id": "gui-basic",
+      "kind": "supplied-example",
+      "source": {
+        "id": "GUI",
+        "pages": [3]
+      },
+      "prompt": "A screen has its unique title, a static background with field headings, a Project name field, a vertical Activities table with Activity name/Percentage/Info columns repeated over five rows, a total-percentage field, Save and Back buttons, and one specified out-of-field error message not visible normally. No logical data model or reading-reference count is supplied. Count data elements; can you give readingReferences and total fp without a default assumption?",
+      "answerFields": [
+        "dataElements",
+        "readingReferences",
+        "fp",
+        "needsClarification"
+      ]
+    },
+    {
+      "id": "benefit-input",
+      "kind": "supplied-example",
+      "source": {
+        "id": "BENEFIT",
+        "pages": [3]
+      },
+      "prompt": "An input form has one person-name field, one likes-sleeping checkbox and one Save button. Count the screen background once; there is no separately specified screen title or other element in this exercise. The specification supplies one reading reference, one writing reference and one supported input action (save/create only, m=1). Find dataElements, r, w, m and base fp at full precision.",
+      "answerFields": [
+        "dataElements",
+        "readingReferences",
+        "writingReferences",
+        "functionalMultiplier",
+        "fp"
+      ]
+    },
+    {
+      "id": "selection-reuse",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "GUI",
+        "pages": [1]
+      },
+      "prompt": "The same unique Country selection list appears on two different screens within one measured application. What is the number of independent selection-list functions, and how many data elements does that list contribute to each screen? Do not count the rest of either screen.",
+      "answerFields": [
+        "independentFunctions",
+        "dataElementsPerScreen",
+        "screenOccurrences"
+      ]
+    },
+    {
+      "id": "query-default",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "MLA",
+        "pages": [3]
+      },
+      "prompt": "The measurement explicitly adopts the three-layer pattern. A query screen is identified, but there is no detailed specification for its reading references. Use the guide-recommended fallback. Return readingReferences and basis: observed, specified, guideline-default, or unresolved.",
+      "answerFields": ["readingReferences", "basis"]
+    },
+    {
+      "id": "business-dependencies",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "MLA",
+        "pages": [5, 6]
+      },
+      "prompt": "Apply MLA Tables 3 and 4 in the chosen three-layer pattern. One UI function has 7 data elements. Its business-side incoming UI message requires 3 messages to data access. Its outgoing UI message requires 2 messages from data access. A separate parent UI record has r=9,w=0. Determine incomingDataElements, incomingReadingReferences, incomingWritingReferences, outgoingDataElements and outgoingReadingReferences. Use the explicitly given dependencies.",
+      "answerFields": [
+        "incomingDataElements",
+        "incomingReadingReferences",
+        "incomingWritingReferences",
+        "outgoingDataElements",
+        "outgoingReadingReferences"
+      ]
+    },
+    {
+      "id": "external-unknown",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "MLA",
+        "pages": [5]
+      },
+      "prompt": "A requirement says only: integrate with an external CRM. It supplies no payload, direction or logical dependencies. Can the internal-message table defaults establish dataElements, readingReferences and writingReferences for this integration? Return those values and needsClarification.",
+      "answerFields": [
+        "dataElements",
+        "readingReferences",
+        "writingReferences",
+        "needsClarification"
+      ]
+    },
+    {
+      "id": "horizontal-table",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "GUI",
+        "pages": [2]
+      },
+      "prompt": "A horizontal table has four unique row attributes (Name, Budget, Owner, Status), repeated across twelve project columns. No dynamic choices or other elements are specified. Count only the table data elements, not the complete screen.",
+      "answerFields": ["tableDataElements"]
+    },
+    {
+      "id": "task-unknown",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "BENEFIT",
+        "pages": [19, 20, 34]
+      },
+      "prompt": "The only evidence is the user task: create a customer. There is no screen, list of fields, data model, measurement pattern or delivery-status information. Return dataElements, readingReferences and degreeOfCompletion, and whether clarification is needed. Do not make a provisional estimate.",
+      "answerFields": [
+        "dataElements",
+        "readingReferences",
+        "degreeOfCompletion",
+        "needsClarification"
+      ]
+    },
+    {
+      "id": "quality-and-errors",
+      "kind": "constructed-exercise",
+      "source": {
+        "id": "GUI",
+        "pages": [2, 4]
+      },
+      "prompt": "An otherwise measured screen has these extra requirements: tooltip help for an existing field, a restriction on allowed characters, window resizing and scrollbars, and one specified warning outside the data fields. Count only additional data elements caused by these requirements.",
+      "answerFields": ["additionalDataElements"]
+    },
+    {
+      "id": "intro-query",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [10, 15]
+      },
+      "prompt": "A data inquiry has 40 data elements and 4 explicitly supplied reading references. Give base fp at full precision, using the stated inquiry formula.",
+      "answerFields": ["fp"]
+    },
+    {
+      "id": "intro-input-two",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [19, 21]
+      },
+      "prompt": "An input dialog supports create and update, with 19 data elements, 1 writing reference and 1 additional reading reference. Return functionalMultiplier and base fp at full precision.",
+      "answerFields": ["functionalMultiplier", "fp"]
+    },
+    {
+      "id": "intro-output",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [24, 25]
+      },
+      "prompt": "A fixed-layout output form has 24 data elements and 2 reading references. Return base fp at full precision.",
+      "answerFields": ["fp"]
+    },
+    {
+      "id": "intro-outgoing",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [30, 31]
+      },
+      "prompt": "An outgoing online message to another application has 14 data elements and 2 specified reading references. Return base fp at full precision.",
+      "answerFields": ["fp"]
+    },
+    {
+      "id": "intro-incoming",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [35, 36]
+      },
+      "prompt": "An incoming online message has 14 data elements, 1 writing reference and 1 additional reading reference. Return base fp at full precision.",
+      "answerFields": ["fp"]
+    },
+    {
+      "id": "intro-storage-conflict",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [40, 41]
+      },
+      "prompt": "An entity has 3 specified attributes. The slide reports 2.1 FP, but the counting-rule slide states 1.5+d/4. Return formulaFp, publishedFp and sourceConflict; do not silently copy or overwrite the published value.",
+      "answerFields": ["formulaFp", "publishedFp", "sourceConflict"]
+    },
+    {
+      "id": "intro-algorithm",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [44, 46]
+      },
+      "prompt": "A calculation routine has 8 distinct variables/data elements and 7 specified operations. Return base fp at full precision.",
+      "answerFields": ["fp"]
+    },
+    {
+      "id": "intro-reports-mapping",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [26]
+      },
+      "prompt": "A non-interactive report has a layout that varies with its data within a specified framework. Identify className and sourceType using INTRO, and exact benefitComponentType using the current mapping table. If there is no exact supported type, return null and needsMappingReview=true.",
+      "answerFields": [
+        "className",
+        "sourceType",
+        "benefitComponentType",
+        "needsMappingReview"
+      ]
+    },
+    {
+      "id": "intro-operation-unknown",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [44, 50]
+      },
+      "prompt": "An algorithmic example lists 11 data elements and 1 reading reference, and labels the result 3.4 FP. It does not give an operation count. Return operations, fp and needsClarification for a defensible measurement; do not reverse-engineer an operation count from the label.",
+      "answerFields": ["operations", "fp", "needsClarification"]
+    },
+    {
+      "id": "intro-summary-conflict",
+      "kind": "supplied-example",
+      "source": {
+        "id": "INTRO",
+        "pages": [51]
+      },
+      "prompt": "A slide sums these displayed values: 2.4, 4.0, 7.2, 5.0, 2.6, 3.4, then prints 24.2. Return sumOfDisplayedValues, publishedTotal and sourceConflict. This is only an arithmetic audit, not validation of the component measurements.",
+      "answerFields": [
+        "sumOfDisplayedValues",
+        "publishedTotal",
+        "sourceConflict"
+      ]
+    }
+  ]
+}

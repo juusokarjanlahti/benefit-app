@@ -1,0 +1,129 @@
+{
+  "answers": [
+    {
+      "id": "gui-basic",
+      "dataElements": 10,
+      "readingReferences": null,
+      "fp": null,
+      "needsClarification": true,
+      "reason": "G01–G05 and G08 count the title, background, Project name field, three columns, total-percentage field, two buttons and specified error. S04 and W01 leave the reference count and FP unresolved. What references are specified?"
+    },
+    {
+      "id": "benefit-input",
+      "dataElements": 4,
+      "readingReferences": 1,
+      "writingReferences": 1,
+      "functionalMultiplier": 1,
+      "fp": 2.1666666666666667,
+      "reason": "G01–G03 and G05 count the background, name field, checkbox and Save button. C02, B03 and F02 apply a multiplier of 1 and use the supplied references."
+    },
+    {
+      "id": "selection-reuse",
+      "independentFunctions": 1,
+      "dataElementsPerScreen": 1,
+      "screenOccurrences": 2,
+      "reason": "G06 counts the shared list once per application and once as a data element on each of the two screens."
+    },
+    {
+      "id": "query-default",
+      "readingReferences": 2,
+      "basis": "guideline-default",
+      "reason": "M02 gives a query screen two reading references when detailed specifications are unavailable in the chosen three-layer pattern."
+    },
+    {
+      "id": "business-dependencies",
+      "incomingDataElements": 7,
+      "incomingReadingReferences": 1,
+      "incomingWritingReferences": 3,
+      "outgoingDataElements": 7,
+      "outgoingReadingReferences": 2,
+      "reason": "M04 takes both element counts from the UI function, sets the incoming read count to one and uses the three outbound and two inbound data-access dependencies for the remaining reference counts."
+    },
+    {
+      "id": "external-unknown",
+      "dataElements": null,
+      "readingReferences": null,
+      "writingReferences": null,
+      "needsClarification": true,
+      "reason": "M08 supplies no external integration defaults. Under S04, the counts remain unresolved. What are the message direction, payload and logical dependencies?"
+    },
+    {
+      "id": "horizontal-table",
+      "tableDataElements": 4,
+      "reason": "G04 counts the four unique row attributes of a horizontal table once each."
+    },
+    {
+      "id": "task-unknown",
+      "dataElements": null,
+      "readingReferences": null,
+      "degreeOfCompletion": null,
+      "needsClarification": true,
+      "reason": "S04, G11, M02 and B04 require clarification. What fields and logical references are specified, what measurement pattern applies, and how much of the function is delivered?"
+    },
+    {
+      "id": "quality-and-errors",
+      "additionalDataElements": 1,
+      "reason": "G08 counts the specified out-of-field warning. G09 and G10 exclude resizing, scrolling, the tooltip and the character restriction."
+    },
+    {
+      "id": "intro-query",
+      "fp": 7.914285714285714,
+      "reason": "F01 gives 0.2 + 40/7 + 4/2."
+    },
+    {
+      "id": "intro-input-two",
+      "functionalMultiplier": 2,
+      "fp": 10.333333333333334,
+      "reason": "C02 and B03 assign a multiplier of 2 to create and update. F02 gives 2 × (0.2 + 19/5 + 1/1.5 + 1/2)."
+    },
+    {
+      "id": "intro-output",
+      "fp": 6.8,
+      "reason": "F03 gives 1 + 24/5 + 2/2."
+    },
+    {
+      "id": "intro-outgoing",
+      "fp": 3.5,
+      "reason": "F04 gives 0.5 + 14/7 + 2/2."
+    },
+    {
+      "id": "intro-incoming",
+      "fp": 4.166666666666667,
+      "reason": "F05 gives 0.2 + 14/5 + 1/1.5 + 1/2."
+    },
+    {
+      "id": "intro-storage-conflict",
+      "formulaFp": 2.25,
+      "publishedFp": 2.1,
+      "sourceConflict": true,
+      "reason": "F06 gives 1.5 + 3/4 = 2.25. X01 preserves the published 2.1 separately."
+    },
+    {
+      "id": "intro-algorithm",
+      "fp": 4.033333333333333,
+      "reason": "F07 gives 0.1 + 8/5 + 7/3."
+    },
+    {
+      "id": "intro-reports-mapping",
+      "className": "Non-interactive end-user output service",
+      "sourceType": "o2",
+      "benefitComponentType": "reports",
+      "needsMappingReview": false,
+      "reason": "C03 classifies the variable-layout output as o2 and provides the exact Benefit mapping required by X02."
+    },
+    {
+      "id": "intro-operation-unknown",
+      "operations": null,
+      "fp": null,
+      "needsClarification": true,
+      "reason": "C06 and F07 require an operation count. X01 preserves the published 3.4 separately. What operations are specified?"
+    },
+    {
+      "id": "intro-summary-conflict",
+      "sumOfDisplayedValues": 24.6,
+      "publishedTotal": 24.2,
+      "sourceConflict": true,
+      "reason": "X01 preserves the printed 24.2 separately from the arithmetic sum of 24.6."
+    }
+  ]
+}

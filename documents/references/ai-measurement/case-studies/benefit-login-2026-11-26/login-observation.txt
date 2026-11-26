@@ -1,0 +1,18 @@
+Browser tab: 1, Title: "benefit-app", URL: "http://localhost:5173/benefit-app/login#/login".
+1 AXWebArea benefit-app, URL: localhost:5173/benefit-app/login#/login
+	2 container root
+		3 container
+			4 link Description: FISMA-BENEFIT-logo, Value: localhost:5173/benefit-app/login#/
+			5 text Test Version
+			6 button EN
+			7 button Quick Calculation
+		8 container
+			9 heading Sign in, Value: 1
+				10 text Sign in
+			11 text field (settable)
+			12 text field (settable)
+			13 button
+			14 checkbox (settable, integer) Description: Remember me, Value: 0
+			15 button Login
+
+The focused UI element is 1 AXWebArea benefit-app, URL: localhost:5173/benefit-app/login#/login
