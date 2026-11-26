@@ -149,6 +149,26 @@ test(
           .functionalComponents.length,
         2,
       );
+      const reportResult = await call("add_component", {
+        projectId: 41,
+        component: {
+          title: "Customer report",
+          className: "Non-interactive end-user output service",
+          componentType: "reports",
+          dataElements: 5,
+          readingReferences: 2,
+          degreeOfCompletion: 1,
+        },
+      });
+      assert.equal(reportResult.isError, undefined);
+      const saved = await call("get_project", { projectId: 41 });
+      assert.equal(saved.structuredContent.functionalComponents.length, 3);
+      assert.equal(
+        saved.structuredContent.functionalComponents.find(
+          (entry) => entry.title === "Customer report",
+        ).componentType,
+        "reports",
+      );
       const denied = await call("add_component", { projectId: 999, component });
       assert.equal(denied.isError, true);
       assert.match(denied.content[0].text, /HTTP 403/);
@@ -163,7 +183,7 @@ test(
         1,
         "writes must not retry",
       );
-      assert.equal(project.functionalComponents.length, 2);
+      assert.equal(project.functionalComponents.length, 3);
     } finally {
       await client.close();
       await new Promise((resolve) => api.close(resolve));
