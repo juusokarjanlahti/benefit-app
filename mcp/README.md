@@ -1,12 +1,14 @@
 # FiSMA Benefit MCP server
 
-Use a local MCP client to read saved FiSMA 1.1 calculations from a running
+Use a local MCP client to read and create saved FiSMA 1.1 calculations on a running
 Benefit backend. The server uses stdio and reads data with your Benefit
 account's existing project permissions.
 
 | Tool                          | Result                                                                                     |
 | ----------------------------- | ------------------------------------------------------------------------------------------ |
 | `list_projects`               | Project names, IDs, dates, and version numbers, including archived versions                |
+| `create_project`              | Create an empty version-1 project owned by the configured account                          |
+| `add_component`               | Append a non-multilayer component to an owned, editable project                            |
 | `get_project`                 | A specific version and its functional components and subcomponents                         |
 | `get_project_function_points` | Actual and possible function points, both including and excluding multilayer subcomponents |
 
@@ -58,3 +60,27 @@ as the Benefit web app.
 Try asking your client to list the Benefit projects it can access, then compare
 the actual and possible function points for a project version. Each version has
 its own project ID.
+
+## Creating a project and components
+
+Call `create_project` with `projectName`, then `add_component` with the returned
+`projectId` and a `component` object. The component needs a title, a supported
+class/type pair, `degreeOfCompletion` from 0 to 1, and the numeric inputs for
+that class (matching the web app). Interactive input services also require a
+positive `functionalMultiplier`. The schema lists supported types and fields.
+
+For example, use class `Data storage service`, type `entities or classes`,
+title `Customers`, `dataElements: 6`, and `degreeOfCompletion: 1`. Check the
+saved result with `get_project` and `get_project_function_points`, then refresh
+the project list in the web app signed in as the same account.
+
+These tools save data immediately using existing account permissions. They
+are not idempotent and never retry automatically. If a write times out, inspect
+`list_projects` or `get_project` before retrying to avoid duplicates. Component
+creation supports top-level, non-multilayer components. Editing, deleting, and
+creating multilayer trees are not exposed.
+
+## Local checks
+
+Run `npm --prefix mcp test` to build and check the MCP over stdio against a temporary
+local test API. The tests use a fake token and do not touch saved Benefit projects.
