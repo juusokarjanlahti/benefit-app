@@ -8,6 +8,11 @@ import {
   calculateParentOnlyPossiblePoints,
 } from "../frontend/src/lib/centralizedCalculations.ts";
 
+import {
+  componentClassFields,
+  componentTypeOptions,
+} from "../frontend/src/lib/fc-constants.ts";
+
 function benefitApiUrl(value) {
   const url = URL.parse(value);
   const loopback = ["localhost", "127.0.0.1", "[::1]"].includes(url?.hostname);
@@ -37,17 +42,25 @@ if (!token || !/^[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]+$/.test(token)) {
   );
 }
 
-async function readBenefit(path) {
+async function requestBenefit(path, body) {
   let response;
   try {
     response = await fetch(apiUrl + path, {
-      headers: { Authorization: `Bearer ${token}`, Accept: "application/json" },
+      method: body === undefined ? "GET" : "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/json",
+        ...(body === undefined ? {} : { "Content-Type": "application/json" }),
+      },
+      ...(body === undefined ? {} : { body: JSON.stringify(body) }),
       redirect: "error",
       signal: AbortSignal.timeout(15_000),
     });
   } catch {
     throw new Error(
-      "Could not reach Benefit. Check the backend URL and connectivity.",
+      body === undefined
+        ? "Could not reach Benefit. Check the backend URL and connectivity."
+        : "Benefit did not confirm the write. It may have succeeded; read the project list or project before retrying.",
     );
   }
 
@@ -66,6 +79,11 @@ async function readBenefit(path) {
     throw new Error(`Benefit returned HTTP ${response.status}.`);
   }
 
+  return response;
+}
+
+async function readBenefit(path) {
+  const response = await requestBenefit(path);
   try {
     return await response.json();
   } catch {
@@ -139,6 +157,105 @@ server.registerTool(
   },
   async ({ projectId }) => {
     const project = await readBenefit(`/projects/${projectId}`);
+    return result({
+      ...projectSummary(project),
+      functionalComponents: projectComponents(project),
+    });
+  },
+);
+
+const writeAnnotations = {
+  readOnlyHint: false,
+  destructiveHint: false,
+  idempotentHint: false,
+  openWorldHint: true,
+};
+const count = z.number().int().min(0).max(2147483647);
+const componentSchemas = componentTypeOptions.map(
+  ({ className, componentTypeOptions: types }) => {
+    const fields = componentClassFields.find(
+      (entry) => entry.className === className,
+    ).inputFields;
+    return z.strictObject({
+      title: z.string().trim().min(1).max(255),
+      description: z.string().max(10000).optional(),
+      className: z.literal(className),
+      componentType: z.enum(types),
+      degreeOfCompletion: z.number().min(0).max(1),
+      ...Object.fromEntries(fields.map((field) => [field, count])),
+      ...(className === "Interactive end-user input service"
+        ? { functionalMultiplier: z.number().int().min(1).max(2147483647) }
+        : {}),
+    });
+  },
+);
+
+server.registerTool(
+  "create_project",
+  {
+    description:
+      "Create a new empty Benefit project at version 1 for the configured account. This saves data. Not idempotent: inspect list_projects before retrying after an uncertain failure.",
+    inputSchema: { projectName: z.string().trim().min(1).max(255) },
+    annotations: writeAnnotations,
+  },
+  async ({ projectName }) => {
+    const response = await requestBenefit("/projects", {
+      projectName,
+      version: 1,
+      functionalComponents: [],
+      calculationDate: null,
+    });
+    const location = response.headers.get("Location");
+    const match =
+      location &&
+      new URL(location, apiUrl + "/").pathname.match(/\/projects\/([1-9]\d*)$/);
+    const projectId = match && Number(match[1]);
+    if (!Number.isSafeInteger(projectId)) {
+      throw new Error(
+        "Project was created but its ID could not be read. Use list_projects before retrying.",
+      );
+    }
+    return result(projectSummary(await readBenefit(`/projects/${projectId}`)));
+  },
+);
+
+server.registerTool(
+  "add_component",
+  {
+    description:
+      "Append a non-multilayer functional component to an owned, editable Benefit project. This saves data. Required numeric inputs depend on className. Not idempotent: inspect get_project before retrying after an uncertain failure.",
+    inputSchema: {
+      ...projectInput,
+      component: z.discriminatedUnion("className", componentSchemas),
+    },
+    annotations: writeAnnotations,
+  },
+  async ({ projectId, component }) => {
+    const response = await requestBenefit(
+      `/functional-components/projects/${projectId}`,
+      {
+        dataElements: null,
+        readingReferences: null,
+        writingReferences: null,
+        functionalMultiplier: null,
+        operations: null,
+        description: null,
+        ...component,
+        orderPosition: 0,
+        isMLA: false,
+        isReadonly: false,
+        parentFCId: null,
+        subComponents: [],
+      },
+    );
+    let project;
+    try {
+      project = await response.json();
+    } catch {
+      throw new Error(
+        "Component was saved but the response could not be read. Use get_project before retrying.",
+      );
+    }
     return result({
       ...projectSummary(project),
       functionalComponents: projectComponents(project),

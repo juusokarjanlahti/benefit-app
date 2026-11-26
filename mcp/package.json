@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "esbuild server.mjs --bundle --platform=node --format=esm --target=node22 --packages=external --outfile=dist/server.mjs",
-    "start": "node dist/server.mjs"
+    "start": "node dist/server.mjs",
+    "test": "npm run build && node --test test/*.test.mjs"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.32.2",
