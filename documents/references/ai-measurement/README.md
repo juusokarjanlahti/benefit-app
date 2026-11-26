@@ -7,6 +7,10 @@ FiSMA 1.1 measurement draft. It does not replace ISO/IEC 29881:2010 or certify a
 measurement. No ISO text was available for this extraction; both official guides
 explicitly say to use them together with that standard.
 
+For current project state and next steps, read [STATUS.md](STATUS.md). The
+[login first pass](case-studies/benefit-login-2026-11-26/README.md) is frozen for
+independent scope-manager comparison.
+
 ## Read in this order
 
 1. `sources.json`: exact source editions, hashes, and provenance.

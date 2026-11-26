@@ -1,0 +1,32 @@
+{
+  "caseId": "benefit-login-2026-11-26",
+  "frozenDate": "2026-11-26",
+  "referenceVersion": "0.1.1",
+  "status": "frozen-ai-first-pass-awaiting-independent-scope-manager",
+  "files": [
+    {
+      "file": "invalid-login.jpg",
+      "sha256": "ccfbef44766207fa30fcff272fddf91110f1932aac5131f16873739b5eecf42f"
+    },
+    {
+      "file": "login-normal.jpg",
+      "sha256": "ea60e81dd1e0a2e7757e4e636d13e8e27cec24e5307102df4ae6f1a279153f07"
+    },
+    {
+      "file": "login-observation.txt",
+      "sha256": "e71992167c0c4c90b70c34591b40e01d1ea7d415f2c7b4c167b1f2e1f0462f89"
+    },
+    {
+      "file": "measurement-draft.json",
+      "sha256": "078ef7f2d4236e7274740de10cb96ca9daca0fd31d7cb4ddbd1912715cc06069"
+    },
+    {
+      "file": "remember-me.jpg",
+      "sha256": "b60f4e39b573ba37977c23f9129a719feef6d145792349bf1c859d8d73ad66d6"
+    },
+    {
+      "file": "review.html",
+      "sha256": "208ae0ffe81a35005c921e95b6f90464284f1f32fe509b1449c872c898f4de13"
+    }
+  ]
+}
