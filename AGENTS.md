@@ -121,6 +121,11 @@ Keep business logic in `service/`, not in controllers or repositories — that d
 
 A `Project` contains `FunctionalComponent`s. Each component has a `className`/`componentType`, a `degreeOfCompletion` (0.0–1.0), an `orderPosition` (drag-and-drop order), and class-specific FP inputs (`dataElements`, `readingReferences`, `writingReferences`, `functionalMultiplier`, `operations`). Functional size is measured strictly from functional requirements — technical features (logging, caching) are explicitly out of scope for point calculations.
 
+When turning requirements, screenshots or user tasks into a measurement, start with
+`documents/references/ai-measurement/README.md`. Keep source evidence, guideline
+defaults, unresolved inputs and Benefit implementation behavior distinct. This
+source-derived reference is not a substitute for the full method standard or expert review.
+
 ## CI/CD
 
 - Trunk-based development: all work merges to `main` via PR (see `documents/guides/contributing.md`). Development branches are named `issue/#XXX-description` (features), `bugfix/#XXX-description`, or `chore/description`; keep each PR scoped to one issue — unrelated changes get their own issue and PR.

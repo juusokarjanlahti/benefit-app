@@ -84,3 +84,11 @@ creating multilayer trees are not exposed.
 
 Run `npm --prefix mcp test` to build and check the MCP over stdio against a temporary
 local test API. The tests use a fake token and do not touch saved Benefit projects.
+
+## Measuring from requirements or screenshots
+
+Before proposing measurement inputs, use the
+[AI measurement reference](../documents/references/ai-measurement/README.md).
+It contains source-linked counting rules, class/type mappings, worked examples,
+conditional defaults, open questions and interpretation exercises. Keep evidence
+and unresolved inputs in a reviewable draft before saving through the MCP.
