@@ -1,5 +1,5 @@
 {
-  "referenceVersion": "0.1.0",
+  "referenceVersion": "0.1.1",
   "preparedDate": "2026-11-26",
   "reviewStatus": "source-derived-draft",
   "pageConvention": "1-based physical PDF pages",
@@ -45,8 +45,8 @@
   ],
   "codeSnapshot": {
     "id": "CODE",
-    "baseCommit": "b62622d988373a24d8cec380e2116acaff7c55e2",
-    "note": "Code captured during preparation of reference 0.1.0, before the MCP write-tool change was committed. Code is implementation evidence, not normative authority.",
+    "baseCommit": "a79233ef2291f0749c9c4273eb4135c9b51de8ee",
+    "note": "Snapshot after syncing upstream Reports fix 63fe3076 / PR #1106 through the PR stack. Code is implementation evidence, not normative authority.",
     "files": [
       {
         "path": "frontend/src/lib/calculations.ts",
@@ -62,12 +62,16 @@
       },
       {
         "path": "frontend/src/lib/fc-constants.ts",
-        "sha256": "7e69a73fc4781bdf3eff9c83ee0db1b88ea2d8cb2a6019a0c2d75ad467bdb700"
+        "sha256": "db9cea028b3d064542f8ff267b0427e6142488574d1b35b7b3a2710b42fd110d"
       },
       {
         "path": "mcp/server.mjs",
         "sha256": "32f07aa4e4643fb09547d5a929840114bf23196cd6ef7badb8b73cc5c7d4db70"
       }
     ]
+  },
+  "upstreamReportsFix": {
+    "commit": "63fe3076d8b537ea8499258da4917fd80d5b2728",
+    "pullRequest": "https://github.com/fisma-benefit-app/benefit-app/pull/1106"
   }
 }

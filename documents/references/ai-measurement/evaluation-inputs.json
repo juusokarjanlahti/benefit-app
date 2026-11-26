@@ -1,5 +1,5 @@
 {
-  "referenceVersion": "0.1.0",
+  "referenceVersion": "0.1.1",
   "cases": [
     {
       "id": "gui-basic",
@@ -199,7 +199,7 @@
         "id": "INTRO",
         "pages": [26]
       },
-      "prompt": "A non-interactive report has a layout that varies with its data within a specified framework. Identify className and sourceType using INTRO, and exact benefitComponentType using the current mapping table. If there is no exact supported type, return null and needsMappingReview=true.",
+      "prompt": "A non-interactive report has a layout that varies with its data within a specified framework. Identify className, sourceType as the INTRO code only (for example o2), and exact benefitComponentType using the current mapping table. Return needsMappingReview=false when the exact mapping exists; otherwise return null and true.",
       "answerFields": [
         "className",
         "sourceType",

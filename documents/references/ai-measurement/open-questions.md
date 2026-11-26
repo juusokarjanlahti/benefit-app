@@ -1,6 +1,6 @@
 # Review queue
 
-All items are open in reference version 0.1.0. No application behavior is changed here.
+Reference version 0.1.1. Q12 is resolved by the upstream Reports fix; the other items remain open. No application behavior is changed by this reference.
 
 | ID  | Issue and evidence                                                                                                                                                                                                                             | Required review / effect                                                                                                                                         |
 | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -16,6 +16,6 @@ All items are open in reference version 0.1.0. No application behavior is change
 
 | Q10 | INTRO pp. 41-43 storage labels disagree with its p. 40 equation; p. 51 also has an arithmetic sum mismatch. | Quarantine published labels; preserve separate equation-derived results and source claims. |
 | Q11 | INTRO p. 50 supplies a reading-reference label where the algorithmic formula needs operations. | Operation count and FP remain unresolved; do not infer them from the displayed 3.4. |
-| Q12 | INTRO has 28 BFC types including o2 Reports; the current Benefit options contain 27 and no separate Reports option. | Confirm intended version and mapping with an expert/product owner before silently mapping Reports to forms. |
+| Q12 (resolved) | INTRO has 28 types including o2 Reports. Benefit restored `reports` in commit 63fe3076, merged through upstream PR #1106 and synced to the fork. | Map o2 to `reports`. The prior 27-option snapshot and evaluation are preserved under evaluations/0.1.0. |
 | Q13 | INTRO metadata dates to 2008; GUI and MLA date to 2014, and the full ISO edition is absent. | Treat the introduction as teaching material, retain edition provenance, and resolve version-sensitive differences explicitly. |
 | Q14 | BENEFIT pp. 2-3 illustrates an independent selection-list function with d=1; INTRO p. 14 shows list examples with d=2 or 3. GUI p. 1 says a list contributes one element to each containing screen but does not make every independent list a one-element function. | Keep per-screen contribution and the independent function's own count separate; request the actual list specification before assigning its d. |

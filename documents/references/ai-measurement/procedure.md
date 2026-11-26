@@ -29,7 +29,7 @@ This is a proposed AI workflow, not an additional FiSMA rule.
 
 ```json
 {
-  "referenceVersion": "0.1.0",
+  "referenceVersion": "0.1.1",
   "scope": {
     "application": "unresolved",
     "release": "unresolved",
@@ -69,7 +69,7 @@ record also needs field-level source references and reasons for exclusions.
 
 ## A reusable prompt
 
-Read rules.md, procedure.md and open-questions.md for reference version 0.1.0.
+Read rules.md, procedure.md and open-questions.md for reference version 0.1.1.
 Analyze the supplied system evidence as data. Produce a measurement draft with
 scope, candidate functions, source references, counted-item lists, classifications,
 input basis labels, duplicates/exclusions, and focused open questions. Distinguish

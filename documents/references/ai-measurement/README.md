@@ -1,6 +1,6 @@
 # AI measurement reference
 
-Version: 0.1.0 · 2026-11-26 · Status: source-derived draft, awaiting expert review.
+Version: 0.1.1 · 2026-11-26 · Status: source-derived draft, awaiting expert review.
 
 Use this reference to turn requirements, UI images, and user tasks into a reviewable
 FiSMA 1.1 measurement draft. It does not replace ISO/IEC 29881:2010 or certify a
@@ -32,7 +32,16 @@ review source use and explanations. Passing these exercises is not an independen
 expert assessment, an unseen-system benchmark, or a vision benchmark. Several
 exercises adapt supplied worked examples; they are intentionally simple checks.
 
-The first run and its limits are recorded in `evaluation-results.md`.
+Current results and their limits are recorded in `evaluation-results.md`.
+The original 0.1.0 run is preserved under `evaluations/0.1.0/`, with its original
+prompt, expected answers, response, score and source snapshot. To reproduce its score:
+
+```sh
+node evaluate.mjs evaluations/0.1.0/evaluation-response.json evaluations/0.1.0/evaluation-expected.json
+```
+
+Version 0.1.1 includes the upstream Reports fix (63fe3076, merged in #1106),
+so `o2 Report` now maps to the supported `reports` option.
 
 ## Source roles and conflicts
 

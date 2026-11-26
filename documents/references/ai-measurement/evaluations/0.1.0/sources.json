@@ -1,0 +1,73 @@
+{
+  "referenceVersion": "0.1.0",
+  "preparedDate": "2026-11-26",
+  "reviewStatus": "source-derived-draft",
+  "pageConvention": "1-based physical PDF pages",
+  "fullIsoStandardReviewed": false,
+  "sources": [
+    {
+      "id": "GUI",
+      "filename": "Guideline_for_GUI_FiSMA11.pdf",
+      "pages": 4,
+      "documentDate": "2014-03-20",
+      "sha256": "94c5cdcf9ceb8e0d05aa2fc0d52235529f567d24c5bee8f85bee360d02f90f2f",
+      "role": "FiSMA guideline; supplements ISO/IEC 29881:2010",
+      "originalLocation": "User-supplied PDF; retain original separately. Not redistributed in this reference."
+    },
+    {
+      "id": "MLA",
+      "filename": "Guideline_for_Multilayer_Architecture_FiSMA11_06.pdf",
+      "pages": 7,
+      "documentDate": "2014-05-20",
+      "sha256": "8de60381d180510602338273b3992da4e7d7c9c41faf4fcedcc7be991aad908f",
+      "role": "FiSMA guideline; supplements ISO/IEC 29881:2010",
+      "originalLocation": "User-supplied PDF; retain original separately. Not redistributed in this reference."
+    },
+    {
+      "id": "BENEFIT",
+      "filename": "BENEFIT yleistietoa ja vaatimuksia.pdf",
+      "pages": 34,
+      "documentDate": null,
+      "sha256": "41d5e917549fb91ad3d5cfa343172c730acd2f4fb0da2ba0ab8e038265e9bd95",
+      "role": "Product requirements, explanations and illustrative examples; not the method standard",
+      "originalLocation": "User-supplied PDF; retain original separately. Not redistributed in this reference."
+    },
+    {
+      "id": "INTRO",
+      "filename": "fisma-11-introduction-with-examples.pdf",
+      "pages": 54,
+      "documentDate": null,
+      "pdfCreationDate": "2008-02-05",
+      "sha256": "f808523befafb4ea01eebe17d7de7a24df727ff2a3e7ff6be8ac349086d40800",
+      "role": "FiSMA educational introduction with examples; predates the supplied 2014 guidelines; contains arithmetic and labeling inconsistencies recorded in source-audit.md. Not the full ISO standard.",
+      "originalLocation": "User-supplied PDF; retain separately. Not redistributed in this reference."
+    }
+  ],
+  "codeSnapshot": {
+    "id": "CODE",
+    "baseCommit": "b62622d988373a24d8cec380e2116acaff7c55e2",
+    "note": "Code captured during preparation of reference 0.1.0, before the MCP write-tool change was committed. Code is implementation evidence, not normative authority.",
+    "files": [
+      {
+        "path": "frontend/src/lib/calculations.ts",
+        "sha256": "e99d092ce86ec0a07eec2e1c1dbb6ff502c5f36947106eec668125a3735f57ce"
+      },
+      {
+        "path": "frontend/src/lib/centralizedCalculations.ts",
+        "sha256": "95afbdb0e950cd386d45b7ea0f834a4685019f7d5bfb6e84d7e7fd5c01699097"
+      },
+      {
+        "path": "frontend/src/lib/fc-service-functions.ts",
+        "sha256": "fd1b05399faf04abd558a7753ae2a27c97856f8fba1d40283b183dfcd28a3934"
+      },
+      {
+        "path": "frontend/src/lib/fc-constants.ts",
+        "sha256": "7e69a73fc4781bdf3eff9c83ee0db1b88ea2d8cb2a6019a0c2d75ad467bdb700"
+      },
+      {
+        "path": "mcp/server.mjs",
+        "sha256": "32f07aa4e4643fb09547d5a929840114bf23196cd6ef7badb8b73cc5c7d4db70"
+      }
+    ]
+  }
+}

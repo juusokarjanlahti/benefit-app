@@ -1,5 +1,5 @@
 {
-  "referenceVersion": "0.1.0",
+  "referenceVersion": "0.1.1",
   "answers": [
     {
       "id": "gui-basic",
@@ -92,8 +92,8 @@
       "id": "intro-reports-mapping",
       "className": "Non-interactive end-user output service",
       "sourceType": "o2",
-      "benefitComponentType": null,
-      "needsMappingReview": true
+      "benefitComponentType": "reports",
+      "needsMappingReview": false
     },
     {
       "id": "intro-operation-unknown",

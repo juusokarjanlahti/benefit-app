@@ -1,52 +1,52 @@
-You are the test subject in a FiSMA interpretation smoke test. Use only the supplied reference and exercise inputs. Do not use tools, inspect files, call MCP tools, delegate, search, or change anything. Return only a JSON object with an answers array. Every answer must contain id, all requested answerFields, and a short reason citing rule IDs. Use JSON null for unresolved values and full precision for FP. The expected answers are withheld. This is an interpretation check, not expert certification.
+You are the test subject in a FiSMA interpretation smoke test. Use only the supplied reference and exercises. Do not use tools, inspect files, delegate, search, call MCP tools or make changes. Return only a JSON object with an answers array. Each answer needs id, requested answerFields and a short reason citing rule IDs. Use actual JSON null for unresolved values, full precision for FP and a source type code alone when requested. The expected answers are withheld. This is not expert certification.
 
 --- rules.md ---
 # Source-linked measurement rules
 
-Version 0.1.0. Sources: `sources.json`. These are paraphrases, not verbatim standard text.
+Version 0.1.1. Sources: `sources.json`. These are paraphrases, not verbatim standard text.
 Source kinds: **guideline**, **product**, **workflow**. A supported source statement
 is not the same as expert validation of its application to a new system.
 
 ## Scope and evidence
 
-| ID | Rule | Source / kind |
-| --- | --- | --- |
-| S01 | Declare the purpose and application boundaries before counting. A three-layer measurement is a chosen decomposition, not something inferred merely from a screenshot or deployment diagram. | MLA pp. 1-2 / guideline |
-| S02 | Measure each application in the chosen decomposition separately, including relevant inter-layer messages. A decomposed application cannot consist solely of internal messaging; it needs another identified BFC. | MLA p. 1 / guideline |
-| S03 | Separate functional requirements from quality/technical concerns. BENEFIT gives internal logs and caching as exclusions; GUI excludes characteristics required mainly for quality. | BENEFIT p. 1; GUI p. 4 / product + guideline |
-| S04 | Keep unknown counts as null with a question. Identify each populated value as observed, explicitly specified, guideline default, or unresolved. A default is not observed evidence; an unapproved guess is not an input ready to save. | Proposed workflow |
+| ID  | Rule                                                                                                                                                                                                                                   | Source / kind                                |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| S01 | Declare the purpose and application boundaries before counting. A three-layer measurement is a chosen decomposition, not something inferred merely from a screenshot or deployment diagram.                                            | MLA pp. 1-2 / guideline                      |
+| S02 | Measure each application in the chosen decomposition separately, including relevant inter-layer messages. A decomposed application cannot consist solely of internal messaging; it needs another identified BFC.                       | MLA p. 1 / guideline                         |
+| S03 | Separate functional requirements from quality/technical concerns. BENEFIT gives internal logs and caching as exclusions; GUI excludes characteristics required mainly for quality.                                                     | BENEFIT p. 1; GUI p. 4 / product + guideline |
+| S04 | Keep unknown counts as null with a question. Identify each populated value as observed, explicitly specified, guideline default, or unresolved. A default is not observed evidence; an unapproved guess is not an input ready to save. | Proposed workflow                            |
 
 ## GUI counting
 
-| ID | Rule | Source / kind |
-| --- | --- | --- |
-| G01 | Count unique data elements within the function. Specified hidden fields, hidden menu alternatives, hidden table columns and specified error messages may matter even when absent from a screenshot. | GUI p. 1 / guideline |
-| G02 | Count the unique screen name and one screen-background element. Static field headings belong to the background rather than becoming separate elements. Confirm the screen name is part of the evidence; do not invent one. | GUI p. 1 / guideline; last sentence workflow |
-| G03 | Count data fields and links. A data field whose contents may be a link has one additional element for the link behavior. | GUI pp. 1-2 / guideline |
-| G04 | For vertical tables, count unique columns, not repeated rows. For horizontal tables, count unique rows, not repeated columns. For customizable/dynamic tables, include the total specified choices. | GUI p. 2 / guideline |
-| G05 | For customizable/dynamic menus, include the total specified choices. Count sorting designators, selection lists, radio buttons, push buttons, sliders and other required graphical elements as described in the guide. | GUI p. 2 / guideline |
-| G06 | A unique selection list is an independent function counted once per application, and is also one data element on each screen where it occurs. Do not multiply the independent function by its reuse across screens. | GUI p. 1 / guideline |
+| ID  | Rule                                                                                                                                                                                                                                            | Source / kind                                |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| G01 | Count unique data elements within the function. Specified hidden fields, hidden menu alternatives, hidden table columns and specified error messages may matter even when absent from a screenshot.                                             | GUI p. 1 / guideline                         |
+| G02 | Count the unique screen name and one screen-background element. Static field headings belong to the background rather than becoming separate elements. Confirm the screen name is part of the evidence; do not invent one.                      | GUI p. 1 / guideline; last sentence workflow |
+| G03 | Count data fields and links. A data field whose contents may be a link has one additional element for the link behavior.                                                                                                                        | GUI pp. 1-2 / guideline                      |
+| G04 | For vertical tables, count unique columns, not repeated rows. For horizontal tables, count unique rows, not repeated columns. For customizable/dynamic tables, include the total specified choices.                                             | GUI p. 2 / guideline                         |
+| G05 | For customizable/dynamic menus, include the total specified choices. Count sorting designators, selection lists, radio buttons, push buttons, sliders and other required graphical elements as described in the guide.                          | GUI p. 2 / guideline                         |
+| G06 | A unique selection list is an independent function counted once per application, and is also one data element on each screen where it occurs. Do not multiply the independent function by its reuse across screens.                             | GUI p. 1 / guideline                         |
 | G07 | Login/logout, function designators and menus are independent functional components even when present on multiple views. Help text is one browsing function per application. Resolve what is identical versus a separate function from evidence. | GUI p. 1 / guideline; last sentence workflow |
-| G08 | Count specified warnings/errors outside specified data fields as one data element per function. The guide's basic example includes one error element despite its absence from the ordinary view. | GUI pp. 2-3 / guideline |
-| G09 | Exclude basic window frames, scrolling, resizing, moving, closing and splitting forms into panes. | GUI p. 2 / guideline |
-| G10 | Exclude quality characteristics such as tooltips, character-set restrictions and cosmetic color/blinking requirements. Do not conflate these with a separately specified error-message function under G08. | GUI p. 4 / guideline; distinction workflow |
-| G11 | A screenshot alone does not establish the complete inventory, logical entities, reference counts, behavior of actions, or completion status. Ask for missing requirements; do not count visible labels or database tables indiscriminately. | Proposed workflow based on G01 and MLA p. 3 |
+| G08 | Count specified warnings/errors outside specified data fields as one data element per function. The guide's basic example includes one error element despite its absence from the ordinary view.                                                | GUI pp. 2-3 / guideline                      |
+| G09 | Exclude basic window frames, scrolling, resizing, moving, closing and splitting forms into panes.                                                                                                                                               | GUI p. 2 / guideline                         |
+| G10 | Exclude quality characteristics such as tooltips, character-set restrictions and cosmetic color/blinking requirements. Do not conflate these with a separately specified error-message function under G08.                                      | GUI p. 4 / guideline; distinction workflow   |
+| G11 | A screenshot alone does not establish the complete inventory, logical entities, reference counts, behavior of actions, or completion status. Ask for missing requirements; do not count visible labels or database tables indiscriminately.     | Proposed workflow based on G01 and MLA p. 3  |
 
 ## Reference counts and multilayer decomposition
 
-| ID | Rule | Source / kind |
-| --- | --- | --- |
-| M01 | In the three-layer pattern, menu, selection-list and icon types normally need no business-layer interaction. Login, inquiry, generation, browsing and 1/2/3-functional input types typically do. Do not generate internal messages for every visible control. | MLA p. 2 / guideline |
-| M02 | When detailed specifications exist, measure UI functions from them. Only when detailed specifications are unavailable, the guide recommends UI defaults: list/icon/menu r=1; query/browsing/generation screen r=2; input screen r=1,w=1. Record the default and its condition. | MLA p. 3 / guideline |
-| M03 | UI-side sending message to business: d from UI function, r=1. UI-side receiving message from business: d from UI function, r=1,w=1. These are common-practice defaults; exceptions are allowed. | MLA p. 4, Tables 1-2 and footnote / guideline |
-| M04 | Business-side receiving message from UI: d from UI function, r=1, w equals the number of messages to data access needed for that UI message. Business-side sending message to UI: d from UI function, r equals the number of messages from data access needed for that UI message. Identify those dependencies; do not automatically replace them with physical table counts. | MLA pp. 5-6, Tables 3-4 / guideline |
-| M05 | Business-side sending message to data: d from entity,r=2. Business-side receiving message from data: d from entity,r=1,w=1. | MLA p. 6, Tables 5-6 / guideline |
-| M06 | Data-side receiving message from business: d from entity,r=0,w=1. Data-side sending message to business: d from entity,r=1. Each logical entity has a unique message to/from data access in this pattern. | MLA pp. 6-7, Tables 7-8 / guideline |
-| M07 | Assign a sending message to its sender's layer and a receiving message to its receiver's layer. Reports/algorithms are measured normally in business logic; logical entities normally in data access. | MLA pp. 2,5-6 / guideline |
-| M08 | External integrations require case-by-case measurement; this guide provides no default reference values for them. Do not apply internal-message defaults to arbitrary external APIs. | MLA p. 5 / guideline |
-| M09 | The table defaults represent common practice and can have exceptions in d and references. Distinguish an exception justified by requirements from an unsupported guess. | MLA p. 4 footnote / guideline |
-| B01 | BENEFIT describes a writing reference as also covering reads of that same logical entity, so it should not also be counted as a reading reference. Do not assume this local explanation establishes every reference case in the method. | BENEFIT pp. 2,5 / product explanation |
-| B02 | BENEFIT's simplified generated business-to-UI/reference rules use the parent r+w sum. Treat this as its implementation pattern, not a universal replacement for dependency-based M04. | BENEFIT pp. 22-23; CODE fc-service-functions.ts / product |
+| ID  | Rule                                                                                                                                                                                                                                                                                                                                                                          | Source / kind                                             |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| M01 | In the three-layer pattern, menu, selection-list and icon types normally need no business-layer interaction. Login, inquiry, generation, browsing and 1/2/3-functional input types typically do. Do not generate internal messages for every visible control.                                                                                                                 | MLA p. 2 / guideline                                      |
+| M02 | When detailed specifications exist, measure UI functions from them. Only when detailed specifications are unavailable, the guide recommends UI defaults: list/icon/menu r=1; query/browsing/generation screen r=2; input screen r=1,w=1. Record the default and its condition.                                                                                                | MLA p. 3 / guideline                                      |
+| M03 | UI-side sending message to business: d from UI function, r=1. UI-side receiving message from business: d from UI function, r=1,w=1. These are common-practice defaults; exceptions are allowed.                                                                                                                                                                               | MLA p. 4, Tables 1-2 and footnote / guideline             |
+| M04 | Business-side receiving message from UI: d from UI function, r=1, w equals the number of messages to data access needed for that UI message. Business-side sending message to UI: d from UI function, r equals the number of messages from data access needed for that UI message. Identify those dependencies; do not automatically replace them with physical table counts. | MLA pp. 5-6, Tables 3-4 / guideline                       |
+| M05 | Business-side sending message to data: d from entity,r=2. Business-side receiving message from data: d from entity,r=1,w=1.                                                                                                                                                                                                                                                   | MLA p. 6, Tables 5-6 / guideline                          |
+| M06 | Data-side receiving message from business: d from entity,r=0,w=1. Data-side sending message to business: d from entity,r=1. Each logical entity has a unique message to/from data access in this pattern.                                                                                                                                                                     | MLA pp. 6-7, Tables 7-8 / guideline                       |
+| M07 | Assign a sending message to its sender's layer and a receiving message to its receiver's layer. Reports/algorithms are measured normally in business logic; logical entities normally in data access.                                                                                                                                                                         | MLA pp. 2,5-6 / guideline                                 |
+| M08 | External integrations require case-by-case measurement; this guide provides no default reference values for them. Do not apply internal-message defaults to arbitrary external APIs.                                                                                                                                                                                          | MLA p. 5 / guideline                                      |
+| M09 | The table defaults represent common practice and can have exceptions in d and references. Distinguish an exception justified by requirements from an unsupported guess.                                                                                                                                                                                                       | MLA p. 4 footnote / guideline                             |
+| B01 | BENEFIT describes a writing reference as also covering reads of that same logical entity, so it should not also be counted as a reading reference. Do not assume this local explanation establishes every reference case in the method.                                                                                                                                       | BENEFIT pp. 2,5 / product explanation                     |
+| B02 | BENEFIT's simplified generated business-to-UI/reference rules use the parent r+w sum. Treat this as its implementation pattern, not a universal replacement for dependency-based M04.                                                                                                                                                                                         | BENEFIT pp. 22-23; CODE fc-service-functions.ts / product |
 
 ## Formulas and saving
 
@@ -55,15 +55,15 @@ BENEFIT pp. 4-5,32 give the following formulas. They agree with this checkout's
 against the full ISO standard here. d=data elements; r=reading references;
 w=writing references; o=operations; m=functionality multiplier.
 
-| ID | Class | Base points |
-| --- | --- | --- |
-| F01 | Interactive end-user navigation and query service | 0.2 + d/7 + r/2 |
-| F02 | Interactive end-user input service | m × (0.2 + d/5 + w/1.5 + r/2) |
-| F03 | Non-interactive end-user output service | 1 + d/5 + r/2 |
-| F04 | Interface service to other applications | 0.5 + d/7 + r/2 |
-| F05 | Interface service from other applications | 0.2 + d/5 + w/1.5 + r/2 |
-| F06 | Data storage service | 1.5 + d/4 |
-| F07 | Algorithmic or manipulation service | 0.1 + d/5 + o/3 |
+| ID  | Class                                             | Base points                   |
+| --- | ------------------------------------------------- | ----------------------------- |
+| F01 | Interactive end-user navigation and query service | 0.2 + d/7 + r/2               |
+| F02 | Interactive end-user input service                | m × (0.2 + d/5 + w/1.5 + r/2) |
+| F03 | Non-interactive end-user output service           | 1 + d/5 + r/2                 |
+| F04 | Interface service to other applications           | 0.5 + d/7 + r/2               |
+| F05 | Interface service from other applications         | 0.2 + d/5 + w/1.5 + r/2       |
+| F06 | Data storage service                              | 1.5 + d/4                     |
+| F07 | Algorithmic or manipulation service               | 0.1 + d/5 + o/3               |
 
 - **B03 (product):** Input multiplier represents supported add/change/delete functions,
   hence 1,2 or 3 in BENEFIT p. 5. This checkout derives it from `1-functional`,
@@ -100,7 +100,7 @@ does not validate all examples. See classification.md for C01-C06.
 
 C01-C06 paraphrase INTRO. Its PDF metadata dates to 2008, before the supplied 2014
 guides; these descriptions are teaching aids, not proof of ISO-edition compliance.
-The source distinguishes 28 types; this checkout exposes 27 selectable options.
+The source distinguishes 28 types; this checkout exposes all 28 selectable options after the Reports fix (63fe3076).
 Mapping is based on `frontend/src/lib/fc-constants.ts`; wording differences are
 recorded here rather than changing the source terminology.
 
@@ -109,26 +109,26 @@ recorded here rather than changing the source terminology.
 INTRO pp. 11-17. Identify the user service rather than treating every control as
 an independent BFC. Apply GUI rules to counted elements and shared functions.
 
-| Source type | Identifying service | Benefit componentType |
-| --- | --- | --- |
-| q1 Icon | Starts a service or application | function designators |
-| q2 Login/logout | Controls user access | log-in log-out functions |
-| q3 Menu | Selects next task or destination | function lists |
-| q4 Selection list | Offers acceptable parameter values | selection lists |
-| q5 Data inquiry | Shows details from data stores | data inquiries |
-| q6 Generation dialog | Initiates a report or manipulation subprocess | generation indicators |
-| q7 Browsing list | Shows similar records for filtering or inspecting details | browsing lists |
+| Source type          | Identifying service                                       | Benefit componentType    |
+| -------------------- | --------------------------------------------------------- | ------------------------ |
+| q1 Icon              | Starts a service or application                           | function designators     |
+| q2 Login/logout      | Controls user access                                      | log-in log-out functions |
+| q3 Menu              | Selects next task or destination                          | function lists           |
+| q4 Selection list    | Offers acceptable parameter values                        | selection lists          |
+| q5 Data inquiry      | Shows details from data stores                            | data inquiries           |
+| q6 Generation dialog | Initiates a report or manipulation subprocess             | generation indicators    |
+| q7 Browsing list     | Shows similar records for filtering or inspecting details | browsing lists           |
 
 ## C02: Interactive end-user input service
 
 INTRO pp. 19-22. Multiplier counts the supported create/update/delete maintenance
 actions, not the number of buttons, fields or database writes.
 
-| Source type | Maintenance actions | Benefit componentType |
-| --- | --- | --- |
-| i1 | One of create/update/delete | 1-functional |
-| i2 | Two of create/update/delete | 2-functional |
-| i3 | All three | 3-functional |
+| Source type | Maintenance actions         | Benefit componentType |
+| ----------- | --------------------------- | --------------------- |
+| i1          | One of create/update/delete | 1-functional          |
+| i2          | Two of create/update/delete | 2-functional          |
+| i3          | All three                   | 3-functional          |
 
 ## C03: Non-interactive end-user output service
 
@@ -136,26 +136,26 @@ INTRO pp. 24-28. Preserve this distinction from the screen that initiates output
 A screenshot of a report does not by itself establish whether the source layout
 is fixed or varies with the data.
 
-| Source type | Identifying service | Benefit componentType |
-| --- | --- | --- |
-| o1 Form | Printed/displayed document with fixed layout, e.g. receipt | forms |
-| o2 Report | Layout can vary with data within a specified framework | No exact supported option; review mapping |
-| o3 Email/text message | Electronically transmitted output document | emails for text messages |
-| o4 Monitor | Continually displayed information updated with data changes | monitor screens |
+| Source type           | Identifying service                                         | Benefit componentType                     |
+| --------------------- | ----------------------------------------------------------- | ----------------------------------------- |
+| o1 Form               | Printed/displayed document with fixed layout, e.g. receipt  | forms                                     |
+| o2 Report             | Layout can vary with data within a specified framework      | reports |
+| o3 Email/text message | Electronically transmitted output document                  | emails for text messages                  |
+| o4 Monitor            | Continually displayed information updated with data changes | monitor screens                           |
 
 ## C04: Interfaces to/from other applications
 
 INTRO pp. 30-38. Use direction relative to the measured application's boundary.
 A task saying only “integrate” does not determine direction, payload or references.
 
-| Source type | Service | Benefit componentType |
-| --- | --- | --- |
-| t1 | Outgoing online message | messages to other applications |
-| t2 | Outgoing batch transfer records | batch records to other applications |
-| t3 | Outgoing signal to device/application | signals to devices or other applications |
-| f1 | Incoming online message | messages from other applications |
-| f2 | Incoming batch transfer records | batch records from other applications |
-| f3 | Incoming signal from device/application | signals from devices or other applications |
+| Source type | Service                                 | Benefit componentType                      |
+| ----------- | --------------------------------------- | ------------------------------------------ |
+| t1          | Outgoing online message                 | messages to other applications             |
+| t2          | Outgoing batch transfer records         | batch records to other applications        |
+| t3          | Outgoing signal to device/application   | signals to devices or other applications   |
+| f1          | Incoming online message                 | messages from other applications           |
+| f2          | Incoming batch transfer records         | batch records from other applications      |
+| f3          | Incoming signal from device/application | signals from devices or other applications |
 
 Class names are respectively `Interface service to other applications` and
 `Interface service from other applications`. M08 prohibits borrowing internal
@@ -167,10 +167,10 @@ INTRO pp. 40-42. Persistent logical information relevant to the user, not simply
 one function per physical database object. The example FP labels on pp. 41-42
 are disputed; the type descriptions and formula audit remain separately usable.
 
-| Source type | Service | Benefit componentType |
-| --- | --- | --- |
-| d1 | Persistent logical entities/classes | entities or classes |
-| d2 | Other persistent logical records | other record types |
+| Source type | Service                             | Benefit componentType |
+| ----------- | ----------------------------------- | --------------------- |
+| d1          | Persistent logical entities/classes | entities or classes   |
+| d2          | Other persistent logical records    | other record types    |
 
 ## C06: Algorithmic or manipulation service
 
@@ -179,14 +179,14 @@ ordinary technical implementation details are not automatically additional BFCs.
 An explicitly required security algorithm can be a functional service; this does
 not make every security/quality constraint a separately counted routine.
 
-| Source type | Service | Benefit componentType |
-| --- | --- | --- |
-| a1 | Specified security algorithm, such as encryption | security routines |
-| a2 | Arithmetic/logical calculation routine | calculation routines |
-| a3 | Simulation calculation | simulation routines |
-| a4 | Special format conversion beyond simple editing | formatting routines |
-| a5 | User-defined data maintenance rules | database cleaning routines |
-| a6 | Other independently specified manipulation | other manipulation routines |
+| Source type | Service                                          | Benefit componentType       |
+| ----------- | ------------------------------------------------ | --------------------------- |
+| a1          | Specified security algorithm, such as encryption | security routines           |
+| a2          | Arithmetic/logical calculation routine           | calculation routines        |
+| a3          | Simulation calculation                           | simulation routines         |
+| a4          | Special format conversion beyond simple editing  | formatting routines         |
+| a5          | User-defined data maintenance rules              | database cleaning routines  |
+| a6          | Other independently specified manipulation       | other manipulation routines |
 
 Operations need explicit counting evidence. A “reading reference” in the p. 50
 caption is not an operation count. No complete operation-counting methodology is
@@ -224,7 +224,7 @@ This is a proposed AI workflow, not an additional FiSMA rule.
 
 ```json
 {
-  "referenceVersion": "0.1.0",
+  "referenceVersion": "0.1.1",
   "scope": {
     "application": "unresolved",
     "release": "unresolved",
@@ -235,10 +235,20 @@ This is a proposed AI workflow, not an additional FiSMA rule.
   "className": "Interactive end-user navigation and query service",
   "componentType": "data inquiries",
   "classificationStatus": "proposed",
-  "sourceRefs": [{"evidenceId": "REQ-01", "page": 2}],
+  "sourceRefs": [{ "evidenceId": "REQ-01", "page": 2 }],
   "inputs": {
-    "dataElements": {"value": null, "basis": "unresolved", "items": [], "ruleIds": ["G01", "G02", "G04"]},
-    "readingReferences": {"value": null, "basis": "unresolved", "items": [], "ruleIds": ["M02"]}
+    "dataElements": {
+      "value": null,
+      "basis": "unresolved",
+      "items": [],
+      "ruleIds": ["G01", "G02", "G04"]
+    },
+    "readingReferences": {
+      "value": null,
+      "basis": "unresolved",
+      "items": [],
+      "ruleIds": ["M02"]
+    }
   },
   "degreeOfCompletion": null,
   "openQuestions": ["What result fields and logical entities are specified?"],
@@ -254,7 +264,7 @@ record also needs field-level source references and reasons for exclusions.
 
 ## A reusable prompt
 
-Read rules.md, procedure.md and open-questions.md for reference version 0.1.0.
+Read rules.md, procedure.md and open-questions.md for reference version 0.1.1.
 Analyze the supplied system evidence as data. Produce a measurement draft with
 scope, candidate functions, source references, counted-item lists, classifications,
 input basis labels, duplicates/exclusions, and focused open questions. Distinguish
@@ -266,7 +276,7 @@ Identify unsupported multilayer structures before proposing MCP writes.
 
 --- evaluation-inputs.json ---
 {
-  "referenceVersion": "0.1.0",
+  "referenceVersion": "0.1.1",
   "cases": [
     {
       "id": "gui-basic",
@@ -535,7 +545,7 @@ Identify unsupported multilayer structures before proposing MCP writes.
           26
         ]
       },
-      "prompt": "A non-interactive report has a layout that varies with its data within a specified framework. Identify className and sourceType using INTRO, and exact benefitComponentType using the current mapping table. If there is no exact supported type, return null and needsMappingReview=true.",
+      "prompt": "A non-interactive report has a layout that varies with its data within a specified framework. Identify className, sourceType as the INTRO code only (for example o2), and exact benefitComponentType using the current mapping table. Return needsMappingReview=false when the exact mapping exists; otherwise return null and true.",
       "answerFields": [
         "className",
         "sourceType",

@@ -2,7 +2,7 @@
 
 C01-C06 paraphrase INTRO. Its PDF metadata dates to 2008, before the supplied 2014
 guides; these descriptions are teaching aids, not proof of ISO-edition compliance.
-The source distinguishes 28 types; this checkout exposes 27 selectable options.
+The source distinguishes 28 types; this checkout exposes all 28 selectable options after the Reports fix (63fe3076).
 Mapping is based on `frontend/src/lib/fc-constants.ts`; wording differences are
 recorded here rather than changing the source terminology.
 
@@ -38,12 +38,12 @@ INTRO pp. 24-28. Preserve this distinction from the screen that initiates output
 A screenshot of a report does not by itself establish whether the source layout
 is fixed or varies with the data.
 
-| Source type           | Identifying service                                         | Benefit componentType                     |
-| --------------------- | ----------------------------------------------------------- | ----------------------------------------- |
-| o1 Form               | Printed/displayed document with fixed layout, e.g. receipt  | forms                                     |
-| o2 Report             | Layout can vary with data within a specified framework      | No exact supported option; review mapping |
-| o3 Email/text message | Electronically transmitted output document                  | emails for text messages                  |
-| o4 Monitor            | Continually displayed information updated with data changes | monitor screens                           |
+| Source type           | Identifying service                                         | Benefit componentType    |
+| --------------------- | ----------------------------------------------------------- | ------------------------ |
+| o1 Form               | Printed/displayed document with fixed layout, e.g. receipt  | forms                    |
+| o2 Report             | Layout can vary with data within a specified framework      | reports                  |
+| o3 Email/text message | Electronically transmitted output document                  | emails for text messages |
+| o4 Monitor            | Continually displayed information updated with data changes | monitor screens          |
 
 ## C04: Interfaces to/from other applications
 

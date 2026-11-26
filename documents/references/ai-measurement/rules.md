@@ -1,6 +1,6 @@
 # Source-linked measurement rules
 
-Version 0.1.0. Sources: `sources.json`. These are paraphrases, not verbatim standard text.
+Version 0.1.1. Sources: `sources.json`. These are paraphrases, not verbatim standard text.
 Source kinds: **guideline**, **product**, **workflow**. A supported source statement
 is not the same as expert validation of its application to a new system.
 

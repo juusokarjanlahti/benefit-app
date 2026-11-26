@@ -1,8 +1,8 @@
 {
-  "referenceVersion": "0.1.0",
-  "passedCases": 18,
+  "referenceVersion": "0.1.1",
+  "passedCases": 19,
   "totalCases": 19,
-  "passedFields": 48,
+  "passedFields": 49,
   "totalFields": 49,
   "results": [
     {
@@ -87,15 +87,8 @@
     },
     {
       "id": "intro-reports-mapping",
-      "passed": false,
-      "failures": [
-        {
-          "field": "sourceType",
-          "expected": "o2",
-          "received": "o2 Report",
-          "missing": false
-        }
-      ]
+      "passed": true,
+      "failures": []
     },
     {
       "id": "intro-operation-unknown",

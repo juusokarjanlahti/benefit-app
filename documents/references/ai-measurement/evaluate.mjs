@@ -4,13 +4,13 @@ import { fileURLToPath } from "node:url";
 // Source-derived decision checks only. Does not call a model, MCP, or Benefit API.
 const expected = JSON.parse(
   await readFile(
-    new URL("./evaluation-expected.json", import.meta.url),
+    process.argv[3] ?? new URL("./evaluation-expected.json", import.meta.url),
     "utf8",
   ),
 );
 if (!process.argv[2]) {
   console.error(
-    `Usage: node ${fileURLToPath(import.meta.url)} /path/to/model-answers.json`,
+    `Usage: node ${fileURLToPath(import.meta.url)} /path/to/model-answers.json [expected-answers.json]`,
   );
   process.exit(2);
 }

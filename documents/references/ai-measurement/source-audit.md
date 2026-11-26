@@ -33,8 +33,9 @@ to numeric reference answers or describe the derived column as officially correc
 - **p. 54:** Its complete-system total includes the disputed storage subtotal and
   rounded component subtotals. It is not accepted as an exact arithmetic benchmark.
 - **pp. 9,24-28:** The introduction separates fixed forms and variable-layout reports.
-  The current application has no separate Reports type. Preserve that source
-  distinction pending a mapping decision, rather than claiming all 28 types are supported.
+  The original 0.1.0 application snapshot lacked a Reports option. This application
+  gap is resolved by upstream commit 63fe3076 / PR #1106: `o2 Report` now maps to
+  `reports`, bringing the options to 28. The source distinction remains valid.
 
 ## Accepted use of unflagged examples
 
